@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reserv.css">
-    <title>Reservation</title>
+    <title>Formulaire de Réservation</title>
+
 </head>
 <body>
+
+    <form>
+        <label for="dateInput">Sélectionnez une date:</label>
+        <select id="dateInput" name="dateInput" required>
+            <option value="2024-01-20">20 janvier 2024</option>
+            
+        </select>
+
+        <label for="numberInput">Nombre:</label>
+        <input type="number" id="numberInput" name="numberInput" min="1" value="1" required>
+
+        <input type="button" value="+" onclick="addAdditionalField()">
+
+        <input type="submit" value="Soumettre">
+    </form>
+
     
-    <script src="reserv.js"></script>
 </body>
 </html>
