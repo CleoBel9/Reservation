@@ -1,7 +1,23 @@
 /*//convertir une date en chaine de cara 
 .toLocalDateString()*/
 
+// reserv.js
+
 function addAdditionalField() {
+    // Création d'un nouvel élément div
+    var newDiv = document.createElement("div");
+
+    // Ajout du contenu HTML à la div
+    newDiv.innerHTML = `
+        <label for="additionalInput">Champ supplémentaire:</label>
+        <input type="text" id="additionalInput" name="additionalInput">`;
+
+    // Ajout de la nouvelle div au formulaire
+    document.querySelector("form").appendChild(newDiv);
+}
+
+
+/*function addAdditionalField() {
     var additionalField = document.createElement('div');
     additionalField.className = 'additional-field';
 
@@ -36,4 +52,4 @@ function addAdditionalField() {
 
     var form = document.querySelector('form');
     form.appendChild(additionalField);
-}
+}*/
