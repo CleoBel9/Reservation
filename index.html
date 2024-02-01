@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reserv.css">
     <title>Formulaire de Réservation</title>
-
 </head>
 <body>
 
-    <form>
+    <form id="reservationForm">
         <label for="dateInput">Sélectionnez une date:</label>
         <select id="dateInput" name="dateInput" required>
             <option value="2024-01-20">20 janvier 2024</option>
-            <option value="2024-01-20">21 fevrier 2024</option>
-            <option value="2024-01-20">22 mars 2024</option>
-            <option value="2024-01-20">23 avril 2024</option>
-            <option value="2024-01-20">24 mai 2024</option>
-            <option value="2024-01-20">25 juin 2024</option>
+            <option value="2024-02-21">21 fevrier 2024</option>
+            <option value="2024-03-22">22 mars 2024</option>
+            <option value="2024-04-23">23 avril 2024</option>
+            <option value="2024-05-24">24 mai 2024</option>
+            <option value="2024-06-25">25 juin 2024</option>
         </select>
 
         <label for="numberInput">Nombre:</label>
         <input type="number" id="numberInput" name="numberInput" min="1" value="1" required>
 
-        <input type="button" value="+" onclick="addAdditionalField()">
+        <input type="button" value="+" id="bouton_ajout">
+
+        <div id="additionalFields"></div>
 
         <input type="submit" value="Soumettre">
     </form>
 
-    <script type="module" src="reserv.js"></script>
+    <script src="./reserv.js"></script>
     
 </body>
 </html>
