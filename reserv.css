@@ -16,12 +16,20 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
 label {
     display: block;
     margin-bottom: 8px;
 }
 
-select, input {
+select,
+input {
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
@@ -32,4 +40,11 @@ input[type="submit"] {
     background-color: #4caf50;
     color: #fff;
     cursor: pointer;
+}
+
+.reservation-container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
