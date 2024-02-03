@@ -17,7 +17,7 @@ function fillDateOptions() {
     var dateSelect = document.getElementById("dateInput");
 
     // Les dates disponibles, assurez-vous de les définir avant d'appeler la fonction fillDateOptions
-    var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23 avril 2024", "24 mai 2024", "25 juin 2024"];
+    var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23 avril 2024", "24 mai 2024", "25 juin 2024", "19 janvier 2021"];
 
     availableDates.forEach(function (date) {
         var option = document.createElement("option");
