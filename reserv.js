@@ -11,33 +11,13 @@ var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23
 document.addEventListener("DOMContentLoaded", function () {
     // Remplit les options de la liste déroulante des dates
     addAdditionalField();
-    fillDateOptions();
-    dateSelect.addEventListener('change', function () {
-        disableSelectedDates();
     });
-});
 
 function getAvailableDates() {
     // Filtrer dates déjà sélectionnées
     var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
     selects.forEach(function (select) {
         var selectedDate = select.value;
-        availableDates = availableDates.filter(date => date !== selectedDate);
-    });
-
-    dateSelect.name = 'additionalDate';
-    dateSelect.required = true;
-
-    dateSelect.addEventListener('change', function () {
-        disableSelectedDates();
-    });
-
-    // Remplit la liste déroulante avec les dates disponibles
-    availableDates.forEach(function (date) {
-        var option = document.createElement('option');
-        option.value = date;
-        option.textContent = date;
-        dateSelect.appendChild(option);
     });
 }
 
@@ -72,6 +52,22 @@ function addAdditionalField() {
     var dateLabel = document.createElement('label');
     dateLabel.textContent = 'Sélectionnez une date de réservation:';
     var dateSelect = document.createElement('select');
+
+    dateSelect.name = 'additionalDate';
+    dateSelect.required = true;
+
+    dateSelect.addEventListener('change', function () {
+        disableSelectedDates();
+    });
+
+    // Remplit la liste déroulante avec les dates disponibles
+    availableDates.forEach(function (date) {
+        var option = document.createElement('option');
+        option.value = date;
+        option.textContent = date;
+        dateSelect.appendChild(option);
+    });
+
     getAvailableDates();
 
     // Crée un label pour le nombre
@@ -100,6 +96,10 @@ function addAdditionalField() {
         if (reservationsCount < 5) {
             bouton_ajout.disabled = false;
         }
+    });
+
+    dateSelect.addEventListener('change', function () {
+        disableSelectedDates();
     });
 
     // Ajoute les éléments à l'encadrement de réservation
