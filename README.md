@@ -1,6 +1,6 @@
 To do list: 
 Les problèmes: 
-    -L 135, ne passe pas dans la boucle Foreach 
+    -L 135, ne passe pas dans la boucle Foreach (grisé)
     -
 
 -Encadrement des réservations peut en ajouter au maximum 5, à la fin le "+" n'est plus affiché. OK
