@@ -5,27 +5,38 @@ let reservationForm = document.getElementById("reservationForm");
 
 // Variable pour compter le nombre de réservations
 let reservationsCount = 0;
+var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23 avril 2024", "24 mai 2024", "25 juin 2024", "19 janvier 2021"];
 
 // Événement déclenché lorsque la page est chargée
 document.addEventListener("DOMContentLoaded", function () {
     // Remplit les options de la liste déroulante des dates
+    addAdditionalField();
     fillDateOptions();
+    dateSelect.addEventListener('change', function () {
+        disableSelectedDates();
+    });
 });
 
-// Fonction pour remplir les options de la liste déroulante des dates
-function fillDateOptions() {
-    var dateSelect = document.getElementById("dateInput");
+function getAvailableDates() {
+    // Filtrer dates déjà sélectionnées
+    var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
+    selects.forEach(function (select) {
+        var selectedDate = select.value;
+        availableDates = availableDates.filter(date => date !== selectedDate);
+    });
 
-    // Les dates disponibles, assurez-vous de les définir avant d'appeler la fonction fillDateOptions
-    var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23 avril 2024", "24 mai 2024", "25 juin 2024", "19 janvier 2021"];
+    dateSelect.name = 'additionalDate';
+    dateSelect.required = true;
 
+    dateSelect.addEventListener('change', function () {
+        disableSelectedDates();
+    });
+
+    // Remplit la liste déroulante avec les dates disponibles
     availableDates.forEach(function (date) {
-        var option = document.createElement("option");
+        var option = document.createElement('option');
         option.value = date;
         option.textContent = date;
-        if (isDateSelected(date)) {
-            option.classList.add("selected-date");
-        }
         dateSelect.appendChild(option);
     });
 }
@@ -51,6 +62,7 @@ bouton_ajout.addEventListener("click", function () {
 
 // Fonction pour ajouter un nouvel encadrement de réservation
 function addAdditionalField() {
+
     // Crée un nouvel élément div
     var additionalField = document.createElement('div');
     // Ajoute des classes à la div
@@ -59,25 +71,8 @@ function addAdditionalField() {
     // Crée un label pour la date
     var dateLabel = document.createElement('label');
     dateLabel.textContent = 'Sélectionnez une date de réservation:';
-
-    // Crée une liste déroulante pour la date
     var dateSelect = document.createElement('select');
-    dateSelect.name = 'additionalDate';
-    dateSelect.required = true;
-
-     dateSelect.addEventListener('change', function () {
-        disableSelectedDates();
-    });
-    // Obtient les dates disponibles
-    var availableDates = getAvailableDates();
-
-    // Remplit la liste déroulante avec les dates disponibles
-    availableDates.forEach(function (date) {
-        var option = document.createElement('option');
-        option.value = date;
-        option.textContent = date;
-        dateSelect.appendChild(option);
-    });
+    getAvailableDates();
 
     // Crée un label pour le nombre
     var numberLabel = document.createElement('label');
@@ -131,36 +126,18 @@ function addAdditionalField() {
     additionalFieldsContainer.appendChild(bouton_ajout);
 }
 
-dateSelect.addEventListener('change', function () {
-    disableSelectedDates();
-});
-
 // Fonction pour désactiver les options déjà sélectionnées
 function disableSelectedDates() {
     var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
     var allOptions = document.querySelectorAll("#dateInput option");
-    
+
     selects.forEach(function (select) {
         var selectedDate = select.value;
-        
+
         allOptions.forEach(function (option) {
             if (option.value === selectedDate) {
                 option.disabled = true;
             }
         });
     });
-}
-
-// Fonction pour obtenir les dates disponibles
-function getAvailableDates() {
-    var allDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23 avril 2024", "24 mai 2024", "25 juin 2024"];
-
-    // Filtrer dates déjà sélectionnées
-    var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
-    selects.forEach(function (select) {
-        var selectedDate = select.value;
-        allDates = allDates.filter(date => date !== selectedDate);
-    });
-
-    return allDates;
 }
