@@ -56,6 +56,7 @@ function addAdditionalField() {
     dateSelect.name = 'additionalDate';
     dateSelect.required = true;
 
+
     dateSelect.addEventListener('change', function () {
         disableSelectedDates();
     });
@@ -65,6 +66,7 @@ function addAdditionalField() {
         var option = document.createElement('option');
         option.value = date;
         option.textContent = date;
+        option.id = "dateInput";
         dateSelect.appendChild(option);
     });
 
@@ -98,9 +100,6 @@ function addAdditionalField() {
         }
     });
 
-    dateSelect.addEventListener('change', function () {
-        disableSelectedDates();
-    });
 
     // Ajoute les éléments à l'encadrement de réservation
     additionalField.appendChild(dateLabel);
@@ -129,15 +128,16 @@ function addAdditionalField() {
 // Fonction pour désactiver les options déjà sélectionnées
 function disableSelectedDates() {
     var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
-    var allOptions = document.querySelectorAll("#dateInput option");
+    var allOptions = document.querySelectorAll("#dateInput");
+    var selectedDates = Array.from(selects).map(select => select.value);
 
-    selects.forEach(function (select) {
-        var selectedDate = select.value;
+    selectedDates.forEach(function (select) {
+        var selectedDate = select;
 
         allOptions.forEach(function (option) {
             if (option.value === selectedDate) {
                 option.disabled = true;
-            }
+            } 
         });
     });
 }
