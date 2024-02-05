@@ -3,6 +3,8 @@ Les problèmes:
     -L135, ne passe pas dans la boucle Foreach (grisé)
     -Dans le premier encadrement enlever le bouton supp, si il y a 1 encadrement alors ne pas afficher le bouton supp, sinon l'afficher.
     -Nombre de fois replique encadrement 
+    -Grisement des dates que lorsque l'encadrement est cree puis faire le choix de la date, puis remodifier la date ET LA LES DATES DEJA CHOISI SERON EN GRISER 
+    -
 
 -Encadrement des réservations peut en ajouter au maximum 5, à la fin le "+" n'est plus affiché. OK
 -Bouton "+" doit se mettre en bas de l'encadrement de réservation, OK, grisé si l'utilisateur n'a pas choisi de date.
