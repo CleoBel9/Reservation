@@ -11,7 +11,7 @@ var availableDates = ["20 janvier 2024", "21 février 2024", "22 mars 2024", "23
 document.addEventListener("DOMContentLoaded", function () {
     // Remplit les options de la liste déroulante des dates
     addAdditionalField();
-    });
+});
 
 function getAvailableDates() {
     // Filtrer dates déjà sélectionnées
@@ -65,6 +65,7 @@ function addAdditionalField() {
         var option = document.createElement('option');
         option.value = date;
         option.textContent = date;
+        option.id = "dateInput";
         dateSelect.appendChild(option);
     });
 
@@ -128,10 +129,11 @@ function addAdditionalField() {
 
 // Fonction pour désactiver les options déjà sélectionnées
 function disableSelectedDates() {
-    var selects = additionalFieldsContainer.querySelectorAll("select[name='additionalDate']");
-    var allOptions = document.querySelectorAll("#dateInput option");
+    var selects = document.querySelectorAll("select[name='additionalDate']");
+    var allOptions = document.querySelectorAll("option#dateInput");
+    var selects_array = [...selects];
 
-    selects.forEach(function (select) {
+    selects_array.forEach(function (select) {
         var selectedDate = select.value;
 
         allOptions.forEach(function (option) {
