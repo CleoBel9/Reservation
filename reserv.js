@@ -26,6 +26,7 @@ function isDateSelected(date) {
     var selectedDates = Array.from(selects).map(select => select.value);
     return selectedDates.includes(date);
 }
+
 // Événement déclenché lorsqu'on clique sur le bouton d'ajout
 bouton_ajout.addEventListener("click", function () {
     // Vérifie si le nombre de réservations est inférieur à 5
@@ -65,7 +66,7 @@ function addAdditionalField() {
         var option = document.createElement('option');
         option.value = date;
         option.textContent = date;
-        option.id = "dateInput";
+        option.className = "dateInput"; // Utiliser une classe au lieu d'un id
         dateSelect.appendChild(option);
     });
 
@@ -99,10 +100,6 @@ function addAdditionalField() {
         }
     });
 
-    dateSelect.addEventListener('change', function () {
-        disableSelectedDates();
-    });
-
     // Ajoute les éléments à l'encadrement de réservation
     additionalField.appendChild(dateLabel);
     additionalField.appendChild(dateSelect);
@@ -130,8 +127,8 @@ function addAdditionalField() {
 // Fonction pour désactiver les options déjà sélectionnées
 function disableSelectedDates() {
     var selects = document.querySelectorAll("select[name='additionalDate']");
-    var allOptions = document.querySelectorAll("option#dateInput");
-    var selects_array = [...selects];
+    var allOptions = document.querySelectorAll(".dateInput"); // Utiliser une classe au lieu d'un id
+    var selects_array = Array.from(selects);
 
     selects_array.forEach(function (select) {
         var selectedDate = select.value;
