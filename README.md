@@ -6,6 +6,9 @@ Les problèmes:
     -Grisement des dates que lorsque l'encadrement est cree puis faire le choix de la date, puis remodifier la date ET LA LES DATES DEJA CHOISI SERON EN GRISER 
     -
 
+Mémo: 
+Faire une fonction qui sera appeler en fin de création de l'encadrement pour verifi si la date est valide si oui afficher sinon les grisé comme mtn  
+
 -Encadrement des réservations peut en ajouter au maximum 5, à la fin le "+" n'est plus affiché. OK
 -Bouton "+" doit se mettre en bas de l'encadrement de réservation, OK, grisé si l'utilisateur n'a pas choisi de date.
 -Bouton de suppression de l'encadrement antérieur. OK
