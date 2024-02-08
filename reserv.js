@@ -61,6 +61,14 @@ function addAdditionalField() {
         disableSelectedDates();
     });
 
+    // Ajoute une option par défaut "choisir une date"
+    var defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Choisir une date';
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    dateSelect.appendChild(defaultOption);
+
     // Remplit la liste déroulante avec les dates disponibles
     availableDates.forEach(function (date) {
         var option = document.createElement('option');
@@ -127,7 +135,7 @@ function addAdditionalField() {
 // Fonction pour désactiver les options déjà sélectionnées
 function disableSelectedDates() {
     var selects = document.querySelectorAll("select[name='additionalDate']");
-    var allOptions = document.querySelectorAll(".dateInput"); // Utiliser une classe au lieu d'un id
+    var allOptions = document.querySelectorAll(".dateInput");
     var selects_array = Array.from(selects);
 
     selects_array.forEach(function (select) {
